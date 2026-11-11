@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b16">
+<title>FREE FIRE DIAMOND TOP UP</title>
+<style>
+:root{
+--bg:#070b16;--panel:#101b30;--panel2:#152541;
+--text:#f4f8ff;--muted:#9aabc4;--blue:#287cff;
+--cyan:#68dfff;--line:#263d60;--green:#29c47d;
+--red:#ff5555;--radius:19px
+}
+*{box-sizing:border-box}
+body{
+margin:0;background:radial-gradient(ellipse at 50% -20%,#123d83 0,transparent 42%),var(--bg);
+color:var(--text);font-family:system-ui,"Noto Sans Bengali",Arial,sans-serif;min-height:100vh
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.wrap{max-width:1100px;margin:auto;padding:18px}
+.top{
+display:flex;align-items:center;justify-content:space-between;gap:12px;
+padding:16px 0;border-bottom:1px solid var(--line);
+position:sticky;top:0;background:#070b16ed;backdrop-filter:blur(12px);z-index:5
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:19px}
+.logo{
+width:44px;height:44px;border-radius:14px;
+background:linear-gradient(135deg,#69e4ff,#1765ff);
+display:grid;place-items:center;color:#06132a;font-size:25px
+}
+.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.btn{
+border:1px solid var(--line);background:var(--panel2);
+color:var(--text);padding:10px 14px;border-radius:12px
+}
+.btn.primary{background:linear-gradient(135deg,#7ae8ff,#287cff);border:0;color:#061329;font-weight:850}
+.btn.danger{color:#ff7777;border-color:#713333}
+.btn:disabled{opacity:.5}
+.hero{padding:38px 0 25px;text-align:center}
+.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:2px;font-size:12px}
+.hero h1{font-size:clamp(30px,6vw,55px);line-height:1.1;margin:12px 0}
+.hero p{color:var(--muted);max-width:650px;margin:12px auto;line-height:1.8}
+.pill{display:inline-block;border:1px solid #2366ad;color:#9cdbff;background:#10264a;border-radius:999px;padding:5px 11px;font-size:11px}
+.home-title{text-align:center;font-size:clamp(27px,4vw,38px);font-weight:950;margin:30px 0 20px}
+.home-title span{color:#65dfff}
+.category-section{margin:30px 0 38px}
+.offer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.offer-card{
+overflow:hidden;border:1px solid #27466f;border-radius:20px;padding:0;
+background:linear-gradient(145deg,#102a55,#091326 75%);
+cursor:pointer;box-shadow:0 12px 30px #0007;
+transition:.2s;color:#f5f9ff;text-align:center;width:100%;min-width:0
+}
+.offer-card:hover{transform:translateY(-5px);border-color:#5edcff}
+.offer-art{
+height:170px;display:grid;place-items:center;position:relative;overflow:hidden;
+background:radial-gradient(circle at 50% 45%,#1c8fff66,transparent 52%),linear-gradient(135deg,#0d2450,#050b1b)
+}
+.offer-art img{width:100%;height:100%;object-fit:cover}
+.offer-emoji{font-size:76px;filter:drop-shadow(0 0 18px #1daeffa8)}
+.offer-label{padding:13px 8px 16px;font-size:17px;font-weight:750;min-height:58px}
+.offer-label small{display:block;color:#8dbce9;font-size:11px;font-weight:500;margin-top:3px}
+.card{background:linear-gradient(145deg,#102344,#0a1325);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.glow{box-shadow:0 8px 30px #087bff12}
+.price{font-size:27px;font-weight:900;color:#73ddff}
+.muted{color:var(--muted)}
+.section{margin:24px 0}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.section-head h2{margin:0;font-size:22px}
+.field{display:grid;gap:6px;margin:11px 0}
+.field label{font-size:13px;color:#c8d8ed}
+.field input,.field select,.field textarea{
+width:100%;background:#0c1628;color:var(--text);
+border:1px solid #304766;border-radius:11px;padding:12px;outline:none
+}
+.field input:focus,.field select:focus{border-color:var(--cyan)}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}
+.hidden{display:none!important}
+.notice{padding:12px 14px;border-radius:12px;background:#14223a;border:1px solid var(--line);margin:12px 0}
+.notice.good{border-color:#236c4b}
+.notice.bad{border-color:#7b3333}
+.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 12px}
+.tabs button.active{background:#123d68;border-color:var(--cyan);color:#aeeaff}
+.adminbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tablewrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);font-size:13px}
+th{color:#8cddff}
+.status{font-size:12px;padding:5px 9px;border-radius:99px;background:#292929}
+.status.Pending{color:#ffc06a}
+.status.Processing{color:#76c9ff}
+.status.Completed{color:#55d99a}
+.status.Cancelled{color:#ff7777}
+.footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:12px;margin-top:40px;text-align:center}
+.empty{text-align:center;padding:30px;color:var(--muted)}
+.actions{display:flex;gap:7px;flex-wrap:wrap}
+.small{font-size:12px}
+.ordercode{font-size:20px;font-weight:900;color:#8cddff;letter-spacing:1px;word-break:break-all}
+.category-detail-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:24px 0}
+.category-detail-head h2{margin:0;font-size:26px}
+.back-link{color:#83dfff;border:1px solid #24558b;background:#0d1d37;border-radius:12px;padding:9px 13px}
+.catalog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+#orderFormCard{margin-top:24px;background:linear-gradient(145deg,#10213d,#0b1426);border-color:#2a5a8a}
+@media(max-width:650px){
+.wrap{padding:13px}.top{align-items:flex-start;flex-direction:column}
+.nav{width:100%}.nav .btn{flex:1}
+.offer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.offer-art{height:125px}.offer-emoji{font-size:58px}
+.hero{padding-top:25px}.formgrid{grid-template-columns:1fr}
+.card{padding:15px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+<div class="brand">
+<div class="logo">💎</div>
+<div>FREE FIRE DIAMOND TOP UP<small>FAST • SAFE • RELIABLE</small></div>
+</div>
+<nav class="nav">
+<button class="btn" onclick="showPage('shop')">Home</button>
+<button class="btn" onclick="showPage('track')">Track Order</button>
+<button class="btn" id="navAccountBtn" onclick="openAccountPage()">Account</button>
+<button class="btn" onclick="showPage('admin')">Admin</button>
+</nav>
+</header>
+
+<main id="shopPage">
+<section class="hero">
+<div class="eyebrow">✦ FREE FIRE TOP-UP CENTER ✦</div>
+<h1>Level Up Your <span style="color:#68dfff">Game</span></h1>
+<p>আপনার পছন্দের অফার নির্বাচন করুন। দ্রুত, সহজ ও নিরাপদে ফ্রি ফায়ার ডায়মন্ড টপ-আপ করুন।</p>
+<span class="pill">💎 Premium Top-Up Experience • Bangladesh</span>
+</section>
+<section class="category-section">
+<h2 class="home-title">Explore <span>Offers</span></h2>
+<div id="homeCards" class="offer-grid">
+<div class="empty">Loading offers...</div>
+</div>
+</section>
+</main>
+
+<!-- Customer Account / Profile Page -->
+<main id="accountPage" class="hidden">
+<section class="hero" style="text-align:left">
+<div class="eyebrow">CUSTOMER DASHBOARD</div>
+<h1>My <span style="color:#68dfff">Account</span></h1>
+</section>
+
+<div id="authContainer" class="card glow" style="max-width:500px;margin-bottom:20px">
+<h3 id="authTitle">Customer Login</h3>
+<form id="authForm">
+<div class="field"><label>Email Address</label><input id="authEmail" type="email" required placeholder="example@gmail.com"></div>
+<div class="field"><label>Password</label><input id="authPassword" type="password" required placeholder="••••••••"></div>
+<div id="extraAuthFields" class="hidden">
+<div class="field"><label>Full Name</label><input id="authName" placeholder="আপনার পুরো নাম"></div>
+<div class="field"><label>Default Free Fire UID</label><input id="authDefaultUid" inputmode="numeric" placeholder="আপনার ফ্রি ফায়ার UID"></div>
+</div>
+<button class="btn primary" id="authSubmitBtn" style="margin-top:10px;width:100%">Login</button>
+</form>
+<button class="btn" style="margin-top:10px;width:100%" onclick="toggleAuthMode()"><span id="authToggleText">Need an account? Register</span></button>
+<div id="authMessage" style="margin-top:10px"></div>
+</div>
+
+<div id="userDashboard" class="hidden">
+<div class="card glow" style="margin-bottom:20px">
+<h3>Profile Settings</h3>
+<form id="profileForm">
+<div class="formgrid">
+<div class="field"><label>Full Name</label><input id="profileName" required></div>
+<div class="field"><label>Default Free Fire UID (অটো-ফিল হবে)</label><input id="profileDefaultUid" inputmode="numeric"></div>
+<div class="field"><label>Phone Number</label><input id="profilePhone" inputmode="tel"></div>
+</div>
+<button class="btn primary" style="margin-top:10px">Update Profile</button>
+</form>
+<div id="profileMessage" style="margin-top:10px"></div>
+<button class="btn danger" style="margin-top:15px" onclick="customerLogout()">Logout Account</button>
+</div>
+
+<div class="card glow">
+<h3>My Order History</h3>
+<div id="customerOrdersTable" class="tablewrap" style="margin-top:10px">Loading orders...</div>
+</div>
+</div>
+</main>
+
+<main id="categoryPage" class="hidden">
+<div class="category-detail-head">
+<button class="back-link" onclick="showPage('shop')">← Home</button>
+<div><div class="eyebrow">SELECT YOUR PACKAGE</div><h2 id="categoryTitle">Top Up</h2></div>
+</div>
+<section class="section">
+<div class="section-head"><h2>💎 Available Packages</h2><span class="muted small" id="packageCount">0 packages</span></div>
+<div id="products" class="catalog-grid"></div>
+</section>
+<section class="section card glow hidden" id="orderFormCard">
+<div class="section-head"><h2>🛒 Place Your Order</h2><span class="pill">Secure Order Form</span></div>
+<form id="orderForm">
+<div class="formgrid">
+<div class="field"><label>Selected Package</label><select id="packageSelect" required><option value="">প্যাকেজ নির্বাচন করুন</option></select></div>
+<div class="field"><label>Free Fire Player UID (ডিফল্ট বা পরিবর্তনযোগ্য)</label><input id="playerUid" required inputmode="numeric" placeholder="আপনার Player UID"></div>
+<div class="field"><label>Player Name (Optional)</label><input id="playerName" placeholder="Player name"></div>
+<div class="field"><label>আপনার মোবাইল নম্বর</label><input id="customerPhone" required inputmode="tel" placeholder="01XXXXXXXXX"></div>
+<div class="field"><label>Payment Method</label><select id="paymentMethod" required><option value="bKash">bKash</option><option value="Nagad">Nagad</option></select></div>
+<div class="field"><label>টাকা পাঠানোর নম্বর</label><input id="senderNumber" required inputmode="tel" placeholder="Send Money number"></div>
+<div class="field"><label>Transaction ID</label><input id="transactionId" required placeholder="TrxID"></div>
+</div>
+<div class="notice" id="paymentInfo">Loading...</div>
+<button class="btn primary" type="submit" id="submitOrder">অর্ডার জমা দিন</button>
+<p class="muted small">অর্ডার জমা হলে Order ID পাবেন। সেটি সংরক্ষণ করুন।</p>
+</form>
+<div id="orderResult"></div>
+</section>
+</main>
+
+<main id="trackPage" class="hidden">
+<section class="hero">
+<div class="eyebrow">ORDER STATUS</div>
+<h1>Track Your <span style="color:#68dfff">Order</span></h1>
+<p>শুধু আপনার Order ID দিয়ে অর্ডারের অবস্থা দেখুন।</p>
+</section>
+<section class="card glow" style="max-width:600px">
+<form id="trackForm">
+<div class="field"><label>Order ID</label><input id="trackCode" required placeholder="FFXXXXXXXXXX"></div>
+<button class="btn primary">Track Order</button>
+</form>
+<div id="trackResult"></div>
+</section>
+</main>
+
+<main id="adminPage" class="hidden">
+<section class="hero" style="text-align:left">
+<div class="eyebrow">STORE CONTROL CENTER</div>
+<h1>Admin <span style="color:#68dfff">Panel</span></h1>
+<p style="margin-left:0">Manage your store.</p>
+</section>
+
+<section id="adminLogin" class="card glow" style="max-width:520px">
+<h2>Admin Login</h2>
+<form id="loginForm">
+<div class="field"><label>Admin Email</label><input id="adminEmail" type="email" required autocomplete="username"></div>
+<div class="field"><label>Password</label><input id="adminPassword" type="password" required autocomplete="current-password"></div>
+<button class="btn primary">Login</button>
+</form>
+<div id="loginMessage"></div>
+</section>
+
+<section id="adminDashboard" class="hidden">
+<div class="adminbar card">
+<div><b>Admin Dashboard</b><div class="muted small" id="adminIdentity"></div></div>
+<button class="btn danger" onclick="logoutAdmin()">Logout</button>
+</div>
+<div class="tabs" style="margin-top:15px">
+<button class="btn active" onclick="adminTab('orders',this)">Orders</button>
+<button class="btn" onclick="adminTab('products',this)">Packages</button>
+<button class="btn" onclick="adminTab('cards',this)">Home Cards</button>
+<button class="btn" onclick="adminTab('settings',this)">Payment Settings</button>
+</div>
+
+<section id="adminOrders" class="card">
+<div class="section-head">
+  <h2>Customer Orders</h2>
+  <div class="actions">
+    <button class="btn" onclick="loadOrders()">Refresh</button>
+    <button class="btn danger" onclick="deleteAllOrders()">Delete All Orders (Bulk)</button>
+  </div>
+</div>
+<div id="ordersTable" class="tablewrap">Loading...</div>
+</section>
+
+<section id="adminProducts" class="card hidden">
+<div class="section-head"><h2>Diamond Packages</h2></div>
+<form id="productForm">
+<input type="hidden" id="productId">
+<div class="formgrid">
+<div class="field"><label>Package Name</label><input id="productName" required placeholder="100 Diamonds"></div>
+<div class="field"><label>Diamond Quantity</label><input id="productDiamonds" type="number" min="1" required></div>
+<div class="field"><label>Price (BDT)</label><input id="productPrice" type="number" min="0" step="0.01" required></div>
+<div class="field"><label>Section</label><select id="productSection" required><option value="">Select Section</option></select></div>
+<div class="field"><label>Sort Order</label><input id="productSort" type="number" value="0"></div>
+</div>
+<div class="actions">
+<button class="btn primary">Save Package</button>
+<button type="button" class="btn" onclick="resetProductForm()">Clear</button>
+</div>
+</form>
+<div id="adminProductList" class="tablewrap" style="margin-top:18px"></div>
+</section>
+
+<section id="adminCards" class="card hidden">
+<h2>Homepage Card Management</h2>
+<form id="cardForm">
+<div class="formgrid">
+<div class="field"><label>Section ID</label><input id="cardId" required placeholder="uid"></div>
+<div class="field"><label>Card Title</label><input id="cardTitle" required></div>
+<div class="field"><label>Subtitle</label><input id="cardSubtitle"></div>
+<div class="field"><label>Icon / Emoji</label><input id="cardIcon" value="💎"></div>
+<div class="field"><label>Image URL</label><input id="cardImage" placeholder="https://..."></div>
+<div class="field"><label>Sort Order</label><input id="cardSort" type="number" value="0"></div>
+</div>
+<label><input id="cardActive" type="checkbox" checked> Active</label>
+<br><br>
+<div class="actions">
+<button class="btn primary">Save Card</button>
+<button type="button" class="btn" onclick="resetCardForm()">Clear</button>
+</div>
+</form>
+<div id="adminCardList" class="tablewrap" style="margin-top:18px"></div>
+</section>
+
+<section id="adminSettings" class="card hidden">
+<h2>Payment Settings</h2>
+<form id="settingsForm">
+<div class="formgrid">
+<div class="field"><label>bKash Number</label><input id="bkashNumber" required></div>
+<div class="field"><label>Nagad Number</label><input id="nagadNumber" required></div>
+<div class="field"><label>WhatsApp Number</label><input id="whatsappNumber" placeholder="8801XXXXXXXXX"></div>
+<div class="field"><label>Store Name</label><input id="storeName"></div>
+</div>
+<button class="btn primary">Save Settings</button>
+</form>
+<div id="settingsMessage"></div>
+</section>
+</section>
+</main>
+
+<footer class="footer">
+<a href="mailto:shohidrana98@gmail.com" style="color:#68dfff;text-decoration:none;font-weight:800">Designed By Shohid Ali</a>
+<br>Customer Support • Manual Payment Verification
+</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL="https://fatwvdtnciteuwplmdjv.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_skugkNk39Z7aUnecYxuwXg_sC5cXtel";
+const db=supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+
+let productsCache=[];
+let sectionsCache=[];
+let settingsCache={bkash:"01700000000",nagad:"01700000000",whatsapp:"",store_name:"FREE FIRE DIAMOND TOP UP"};
+let currentUser=null;
+let customerUser=null;
+let customerProfile=null;
+let activeCategory={id:"uid",title:"UID Top Up",icon:"💎"};
+let isRegisterMode=false;
+
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function money(v){return "৳"+Number(v||0).toLocaleString("en-BD",{maximumFractionDigits:2});}
+function msg(el,text,good=true){el.innerHTML='<div class="notice '+(good?'good':'bad')+'">'+esc(text)+'</div>';}
+
+function showPage(page){
+["shop","category","track","admin","account"].forEach(p=>$(p+"Page").classList.toggle("hidden",p!==page));
+window.scrollTo({top:0,behavior:"smooth"});
+if(page==="admin")refreshAdminState();
+if(page==="account")openAccountPage();
+}
+
+// ================= CUSTOMER ACCOUNT LOGIC =================
+async function openAccountPage(){
+const {data:{session}}=await db.auth.getSession();
+customerUser=session?.user||null;
+
+if(customerUser){
+$("authContainer").classList.add("hidden");
+$("userDashboard").classList.remove("hidden");
+await loadCustomerProfileData();
+}else{
+$("authContainer").classList.remove("hidden");
+$("userDashboard").classList.add("hidden");
+}
+showPage("account");
+}
+
+function toggleAuthMode(){
+isRegisterMode=!isRegisterMode;
+$("authTitle").textContent=isRegisterMode?"Customer Register":"Customer Login";
+$("authSubmitBtn").textContent=isRegisterMode?"Register & Login":"Login";
+$("authToggleText").textContent=isRegisterMode?"Already have an account? Login":"Need an account? Register";
+$("extraAuthFields").classList.toggle("hidden",!isRegisterMode);
+}
+
+$("authForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const email=$("authEmail").value.trim();
+const password=$("authPassword").value;
+const out=$("authMessage");
+out.innerHTML='<div class="notice">Processing...</div>';
+
+if(isRegisterMode){
+const name=$("authName").value.trim();
+const defUid=$("authDefaultUid").value.trim();
+
+const {data,error}=await db.auth.signUp({
+email,
+password,
+options:{ data: { full_name: name, default_uid: defUid } }
+});
+
+if(error) return msg(out, error.message, false);
+
+customerUser = data.user || (await db.auth.getUser()).data.user;
+
+if(customerUser){
+await db.from("profiles").upsert({
+id: customerUser.id,
+full_name: name,
+default_uid: defUid,
+updated_at: new Date().toISOString()
+});
+}
+
+msg(out, "Registration successful!");
+setTimeout(() => { openAccountPage(); }, 500);
+}else{
+const {data,error}=await db.auth.signInWithPassword({email,password});
+if(error) return msg(out, error.message, false);
+customerUser=data.user;
+openAccountPage();
+}
+});
+
+async function loadCustomerProfileData(){
+if(!customerUser) return;
+
+const {data:prof, error:profErr}=await db.from("profiles").select("*").eq("id",customerUser.id).maybeSingle();
+
+if(prof){
+customerProfile=prof;
+$("profileName").value=prof.full_name||"";
+$("profileDefaultUid").value=prof.default_uid||"";
+$("profilePhone").value=prof.phone||"";
+} else {
+customerProfile={full_name:"", default_uid:"", phone:""};
+}
+
+const {data:orders}=await db.from("orders").select("*").eq("user_id",customerUser.id).order("created_at",{ascending:false});
+const host=$("customerOrdersTable");
+
+if(!orders||!orders.length){
+host.innerHTML='<div class="empty">কোনো অর্ডার পাওয়া যায়নি।</div>';
+return;
+}
+
+host.innerHTML=`<table><thead><tr><th>Order ID</th><th>Package</th><th>Diamonds</th><th>Amount</th><th>Status</th></tr></thead><tbody>`+
+orders.map(o=>`<tr><td><b>${esc(o.order_code)}</b></td><td>${esc(o.package_name)}</td><td>${o.diamonds}</td><td>${money(o.amount)}</td><td><span class="status ${esc(o.status)}">${esc(o.status)}</span></td></tr>`).join("")+
+`</tbody></table>`;
+}
+
+$("profileForm").addEventListener("submit",async e=>{
+e.preventDefault();
+if(!customerUser) return;
+
+const row={
+id: customerUser.id,
+full_name:$("profileName").value.trim(),
+default_uid:$("profileDefaultUid").value.trim(),
+phone:$("profilePhone").value.trim(),
+updated_at:new Date().toISOString()
+};
+
+const {error}=await db.from("profiles").upsert(row);
+if(error) msg($("profileMessage"), error.message, false);
+else {
+msg($("profileMessage"), "Profile updated successfully!");
+await loadCustomerProfileData();
+}
+});
+
+async function customerLogout(){
+await db.auth.signOut();
+customerUser=null;
+customerProfile=null;
+openAccountPage();
+}
+
+// ================= SHOP & CATEGORY LOGIC =================
+function openCategory(id,title,icon){
+activeCategory={id,title,icon};
+$("categoryTitle").textContent=icon+" "+title;
+$("orderFormCard").classList.add("hidden");
+$("orderResult").innerHTML="";
+showPage("category");
+renderProducts();
+}
+
+function selectPackage(id){
+$("packageSelect").value=id;
+if(customerProfile && customerProfile.default_uid){
+$("playerUid").value=customerProfile.default_uid;
+}
+$("orderFormCard").classList.remove("hidden");
+$("orderFormCard").scrollIntoView({behavior:"smooth"});
+}
+
+function renderProducts(){
+const host=$("products"),sel=$("packageSelect");
+const list=productsCache.filter(p=>p.section_id===activeCategory.id);
+$("packageCount").textContent=list.length+" packages";
+
+if(!list.length){
+host.innerHTML='<div class="empty card" style="grid-column:1/-1">এই Section-এ কোনো Package নেই। Admin Panel থেকে Package যোগ করুন।</div>';
+}else{
+host.innerHTML=list.map(p=>`
+<article class="card glow">
+<div class="eyebrow">${esc(activeCategory.icon)} ${esc(activeCategory.title)}</div>
+<h3>${esc(p.name)}</h3>
+<div class="muted">${Number(p.diamonds).toLocaleString()} Diamonds</div>
+<div class="price">${money(p.price)}</div>
+<button class="btn primary" style="margin-top:12px;width:100%" onclick="selectPackage('${esc(p.id)}')">Select Package →</button>
+</article>`).join("");
+}
+sel.innerHTML='<option value="">প্যাকেজ নির্বাচন করুন</option>'+
+list.map(p=>`<option value="${esc(p.id)}">${esc(p.name)} — ${money(p.price)}</option>`).join("");
+}
+
+function renderPaymentInfo(){
+const method=$("paymentMethod").value;
+const number=method==="bKash"?settingsCache.bkash:settingsCache.nagad;
+$("paymentInfo").innerHTML=`<b>${esc(method)} Number:</b> <span style="color:#8cddff;font-size:19px;font-weight:900">${esc(number||"Not set")}</span><br><span class="small muted">উপরের নম্বরে Send Money করুন।</span>`;
+}
+
+async function loadStore(){
+const [pr,sr]=await Promise.all([
+db.from("products").select("*").eq("active",true).order("sort_order"),
+db.from("store_settings").select("*").eq("id",1).maybeSingle()
+]);
+if(pr.data)productsCache=pr.data||[];
+if(sr.data)settingsCache={...settingsCache,...sr.data};
+renderProducts();
+renderPaymentInfo();
+}
+
+async function loadSections(){
+const {data,error}=await db.from("store_sections").select("*").order("sort_order");
+if(error)return console.error(error);
+sectionsCache=data||[];
+renderHomeCards();
+const select=$("productSection");
+if(select){
+const old=select.value;
+select.innerHTML='<option value="">Select Section</option>'+
+sectionsCache.map(s=>`<option value="${esc(s.id)}">${esc(s.title)}</option>`).join("");
+if(old)select.value=old;
+}
+}
+
+function renderHomeCards(){
+const host=$("homeCards");
+const list=sectionsCache.filter(s=>s.active);
+if(!list.length){
+host.innerHTML='<div class="empty">কোনো Offer নেই।</div>';
+return;
+}
+host.innerHTML=list.map(s=>`
+<button class="offer-card" onclick="openCategory('${esc(s.id)}','${esc(s.title).replace(/'/g,"&#39;")}','${esc(s.icon||"💎")}')">
+<div class="offer-art">
+${s.image_url?`<img src="${esc(s.image_url)}" alt="">`:`<span class="offer-emoji">${esc(s.icon||"💎")}</span>`}
+</div>
+<div class="offer-label">${esc(s.title)}<small>${esc(s.subtitle||"")}</small></div>
+</button>`).join("");
+}
+
+$("paymentMethod").addEventListener("change",renderPaymentInfo);
+
+$("orderForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const btn=$("submitOrder"),out=$("orderResult");
+const p=productsCache.find(x=>String(x.id)===$("packageSelect").value);
+if(!p)return msg(out,"একটি Package নির্বাচন করুন।",false);
+
+const {data:{session}}=await db.auth.getSession();
+const userId=session?.user?.id||null;
+
+const data={
+user_id:userId,
+player_uid:$("playerUid").value.trim(),
+player_name:$("playerName").value.trim(),
+customer_phone:$("customerPhone").value.trim(),
+package_name:p.name,
+diamonds:p.diamonds,
+amount:p.price,
+payment_method:$("paymentMethod").value,
+transaction_id:$("transactionId").value.trim(),
+sender_number:$("senderNumber").value.trim(),
+status:"Pending"
+};
+btn.disabled=true;btn.textContent="Submitting...";
+const {data:row,error}=await db.from("orders").insert(data).select("order_code").single();
+btn.disabled=false;btn.textContent="অর্ডার জমা দিন";
+if(error)return msg(out,"অর্ডার জমা হয়নি: "+error.message,false);
+
+out.innerHTML=`
+<div class="notice good">
+<b>অর্ডার সফলভাবে জমা হয়েছে!</b>
+<p>আপনার Order ID:</p>
+<div class="ordercode">${esc(row.order_code)}</div>
+</div>`;
+e.target.reset();
+renderPaymentInfo();
+});
+
+$("trackForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const out=$("trackResult");
+out.innerHTML='<div class="notice">Searching...</div>';
+const {data,error}=await db.rpc("track_store_order",{p_order_code:$("trackCode").value.trim()});
+if(error||!data||!data.length)return msg(out,"এই Order ID পাওয়া যায়নি।",false);
+const o=data[0];
+out.innerHTML=`
+<div class="notice good">
+<b>Order Found</b>
+<p class="ordercode">${esc(o.order_id)}</p>
+<p>${esc(o.package_name)} - ${o.diamonds} Diamonds</p>
+<p>Amount: <b>${money(o.amount)}</b></p>
+<p>Status: <span class="status ${esc(o.status)}">${esc(o.status)}</span></p>
+</div>`;
+});
+
+// ================= ADMIN PANEL LOGIC =================
+$("loginForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const {data,error}=await db.auth.signInWithPassword({
+email:$("adminEmail").value.trim(),
+password:$("adminPassword").value
+});
+if(error)return msg($("loginMessage"),"Login failed: "+error.message,false);
+await refreshAdminState();
+});
+
+async function refreshAdminState(){
+const {data:{user}}=await db.auth.getUser();
+currentUser=user;
+if(!user){
+$("adminLogin").classList.remove("hidden");
+$("adminDashboard").classList.add("hidden");
+return;
+}
+const {data:admin,error}=await db.from("admin_users").select("user_id").eq("user_id",user.id).maybeSingle();
+if(error||!admin){
+await db.auth.signOut();
+currentUser=null;
+msg($("loginMessage"),"এই অ্যাকাউন্ট Admin হিসেবে অনুমোদিত নয়।",false);
+$("adminLogin").classList.remove("hidden");
+$("adminDashboard").classList.add("hidden");
+return;
+}
+$("adminLogin").classList.add("hidden");
+$("adminDashboard").classList.remove("hidden");
+$("adminIdentity").textContent=user.email||"Admin";
+await Promise.all([loadOrders(),loadAdminProducts(),loadAdminSettings(),loadAdminCards()]);
+}
+
+async function logoutAdmin(){
+await db.auth.signOut();
+currentUser=null;
+refreshAdminState();
+}
+
+function adminTab(tab,btn){
+["orders","products","cards","settings"].forEach(t=>{
+$("admin"+t[0].toUpperCase()+t.slice(1)).classList.toggle("hidden",t!==tab);
+});
+document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+if(tab==="cards")loadAdminCards();
+if(tab==="products")loadAdminProducts();
+if(tab==="settings")loadAdminSettings();
+}
+
+async function loadOrders(){
+const host=$("ordersTable");
+host.textContent="Loading...";
+const {data,error}=await db.from("orders").select("*").order("created_at",{ascending:false}).limit(100);
+if(error){host.textContent=error.message;return;}
+if(!data.length){host.innerHTML='<div class="empty">কোনো অর্ডার নেই।</div>';return;}
+host.innerHTML=`
+<table><thead><tr><th>Order</th><th>Customer / UID</th><th>Package</th><th>Payment</th><th>Amount</th><th>Status</th><th>Action / Update</th></tr></thead>
+<tbody>${data.map(o=>`
+<tr>
+<td><b>${esc(o.order_code)}</b><div class="small muted">${new Date(o.created_at).toLocaleString()}</div></td>
+<td>${esc(o.customer_phone)}<div class="small muted">UID: ${esc(o.player_uid)}</div></td>
+<td>${esc(o.package_name)}<div class="small muted">${o.diamonds} Diamonds</div></td>
+<td>${esc(o.payment_method)}<div class="small muted">${esc(o.transaction_id)}</div></td>
+<td>${money(o.amount)}</td>
+<td><span class="status ${esc(o.status)}">${esc(o.status)}</span></td>
+<td>
+<div class="actions">
+<select onchange="updateOrder('${esc(o.id)}',this.value)">
+${["Pending","Processing","Completed","Cancelled"].map(s=>`<option ${o.status===s?"selected":""}>${s}</option>`).join("")}
+</select>
+<button class="btn danger small" onclick="deleteOrder('${esc(o.id)}')">Delete</button>
+</div>
+</td>
+</tr>`).join("")}</tbody></table>`;
+}
+
+async function updateOrder(id,status){
+const {error}=await db.from("orders").update({status,updated_at:new Date().toISOString()}).eq("id",id);
+if(error)alert(error.message); else loadOrders();
+}
+
+// Single Order Delete
+async function deleteOrder(id){
+if(!confirm("এই অর্ডারটি স্থায়ীভাবে মুছে ফেলতে চান?")) return;
+const {error}=await db.from("orders").delete().eq("id",id);
+if(error) alert(error.message);
+else loadOrders();
+}
+
+// Bulk Orders Delete (All Orders)
+async function deleteAllOrders(){
+if(!confirm("সতর্কবার্তা: আপনি কি সমস্ত অর্ডারের হিস্ট্রি একসাথে (Bulk) ডিলিট করতে চান?")) return;
+const {error}=await db.from("orders").delete().neq("id", 0); // সব রেকর্ড ডিলিট করবে
+if(error) alert(error.message);
+else {
+alert("সব অর্ডার সফলভাবে মুছে ফেলা হয়েছে।");
+loadOrders();
+}
+}
+
+async function loadAdminProducts(){
+const {data,error}=await db.from("products").select("*").order("sort_order");
+const host=$("adminProductList");
+if(error){host.textContent=error.message;return;}
+host.innerHTML=`
+<table><thead><tr><th>Package</th><th>Section</th><th>Diamonds</th><th>Price</th><th>Visible</th><th>Actions</th></tr></thead>
+<tbody>${(data||[]).map(p=>`
+<tr>
+<td>${esc(p.name)}</td><td>${esc(p.section_id||"-")}</td>
+<td>${p.diamonds}</td><td>${money(p.price)}</td><td>${p.active?"Yes":"No"}</td>
+<td><div class="actions">
+<button class="btn" onclick="editProduct('${esc(p.id)}')">Edit</button>
+<button class="btn" onclick="toggleProduct('${esc(p.id)}',${!p.active})">${p.active?"Hide":"Show"}</button>
+<button class="btn danger" onclick="deleteProduct('${esc(p.id)}')">Delete</button>
+</div></td>
+</tr>`).join("")}</tbody></table>`;
+}
+
+function editProduct(id){
+const p=productsCache.find(x=>String(x.id)===String(id));
+if(!p)return;
+$("productId").value=p.id;
+$("productName").value=p.name;
+$("productDiamonds").value=p.diamonds;
+$("productPrice").value=p.price;
+$("productSort").value=p.sort_order||0;
+$("productSection").value=p.section_id||"";
+}
+
+function resetProductForm(){
+$("productForm").reset();
+$("productId").value="";
+$("productSort").value=0;
+}
+
+$("productForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const id=$("productId").value;
+const row={
+name:$("productName").value.trim(),
+diamonds:Number($("productDiamonds").value),
+price:Number($("productPrice").value),
+sort_order:Number($("productSort").value||0),
+section_id:$("productSection").value
+};
+const q=id?db.from("products").update(row).eq("id",id):db.from("products").insert(row);
+const {error}=await q;
+if(error)return alert(error.message);
+resetProductForm();
+await Promise.all([loadAdminProducts(),loadStore()]);
+});
+
+async function toggleProduct(id,active){
+const {error}=await db.from("products").update({active}).eq("id",id);
+if(error)alert(error.message);
+else{await loadAdminProducts();await loadStore();}
+}
+
+async function deleteProduct(id){
+if(!confirm("এই Package মুছে ফেলবেন?"))return;
+const {error}=await db.from("products").delete().eq("id",id);
+if(error)alert(error.message);
+else{await loadAdminProducts();await loadStore();}
+}
+
+async function loadAdminSettings(){
+const {data,error}=await db.from("store_settings").select("*").eq("id",1).maybeSingle();
+if(error||!data)return;
+$("bkashNumber").value=data.bkash||"";
+$("nagadNumber").value=data.nagad||"";
+$("whatsappNumber").value=data.whatsapp||"";
+$("storeName").value=data.store_name||"";
+}
+
+$("settingsForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const row={
+bkash:$("bkashNumber").value.trim(),
+nagad:$("nagadNumber").value.trim(),
+whatsapp:$("whatsappNumber").value.trim(),
+store_name:$("storeName").value.trim(),
+updated_at:new Date().toISOString()
+};
+const {error}=await db.from("store_settings").update(row).eq("id",1);
+if(error)msg($("settingsMessage"),error.message,false);
+else{
+msg($("settingsMessage"),"Settings saved successfully.");
+await loadStore();
+}
+});
+
+async function loadAdminCards(){
+const {data,error}=await db.from("store_sections").select("*").order("sort_order");
+if(error)return console.error(error);
+sectionsCache=data||[];
+$("adminCardList").innerHTML=`
+<table><thead><tr><th>Card</th><th>Visible</th><th>Actions</th></tr></thead>
+<tbody>${sectionsCache.map(s=>`
+<tr><td>${esc(s.icon)} ${esc(s.title)}</td>
+<td>${s.active?"Yes":"No"}</td>
+<td><div class="actions">
+<button class="btn" onclick="editCard('${esc(s.id)}')">Edit</button>
+<button class="btn danger" onclick="deleteCard('${esc(s.id)}')">Delete</button>
+</div></td></tr>`).join("")}</tbody></table>`;
+}
+
+function editCard(id){
+const s=sectionsCache.find(x=>x.id===id);
+if(!s)return;
+$("cardId").value=s.id;
+$("cardTitle").value=s.title;
+$("cardSubtitle").value=s.subtitle||"";
+$("cardIcon").value=s.icon||"💎";
+$("cardImage").value=s.image_url||"";
+$("cardSort").value=s.sort_order||0;
+$("cardActive").checked=!!s.active;
+}
+
+function resetCardForm(){
+$("cardForm").reset();
+$("cardActive").checked=true;
+}
+
+$("cardForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const row={
+id:$("cardId").value.trim(),
+title:$("cardTitle.title")?.value?.trim()||$("cardTitle").value.trim(),
+subtitle:$("cardSubtitle").value.trim(),
+icon:$("cardIcon").value.trim(),
+image_url:$("cardImage").value.trim(),
+sort_order:Number($("cardSort").value||0),
+active:$("cardActive").checked
+};
+const {error}=await db.from("store_sections").upsert(row,{onConflict:"id"});
+if(error)return alert(error.message);
+resetCardForm();
+await loadAdminCards();
+await loadSections();
+});
+
+async function deleteCard(id){
+if(!confirm("এই Card মুছে ফেলবেন?"))return;
+const {error}=await db.from("store_sections").delete().eq("id",id);
+if(error)return alert(error.message);
+await loadAdminCards();
+await loadSections();
+}
+
+async function init(){
+await Promise.all([loadStore(),loadSections()]);
+const {data:{session}}=await db.auth.getSession();
+if(session?.user){
+customerUser=session.user;
+}
+}
+init().catch(console.error);
+</script>
+</body>
+</html>
