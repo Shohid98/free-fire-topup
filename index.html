@@ -62,6 +62,7 @@ background:radial-gradient(circle at 50% 45%,#1c8fff66,transparent 52%),linear-g
 }
 .offer-art img{width:100%;height:100%;object-fit:cover}
 .offer-emoji{font-size:76px;filter:drop-shadow(0 0 18px #1daeffa8)}
+.offer-ribbon{position:absolute;top:12px;right:-30px;background:#0878ed;color:white;font-size:10px;font-weight:900;padding:5px 32px;transform:rotate(35deg)}
 .offer-label{padding:13px 8px 16px;font-size:17px;font-weight:750;min-height:58px}
 .offer-label small{display:block;color:#8dbce9;font-size:11px;font-weight:500;margin-top:3px}
 .card{background:linear-gradient(145deg,#102344,#0a1325);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
@@ -126,7 +127,6 @@ th{color:#8cddff}
 <nav class="nav">
 <button class="btn" onclick="showPage('shop')">Home</button>
 <button class="btn" onclick="showPage('track')">Track Order</button>
-<button class="btn" id="navAccountBtn" onclick="openAccountPage()">Account</button>
 <button class="btn" onclick="showPage('admin')">Admin</button>
 </nav>
 </header>
@@ -135,7 +135,7 @@ th{color:#8cddff}
 <section class="hero">
 <div class="eyebrow">✦ FREE FIRE TOP-UP CENTER ✦</div>
 <h1>Level Up Your <span style="color:#68dfff">Game</span></h1>
-<p>আপনার পছন্দের অফার নির্বাচন করুন। দ্রুত, সহজ ও নিরাপদে ফ্রি ফায়ার ডায়মন্ড টপ-আপ করুন।</p>
+<p>আপনার পছন্দের অফার নির্বাচন করুন। দ্রুত, সহজ ও নিরাপদে Free Fire Top-Up অর্ডার করুন।</p>
 <span class="pill">💎 Premium Top-Up Experience • Bangladesh</span>
 </section>
 <section class="category-section">
@@ -144,50 +144,6 @@ th{color:#8cddff}
 <div class="empty">Loading offers...</div>
 </div>
 </section>
-</main>
-
-<!-- Customer Account / Profile Page -->
-<main id="accountPage" class="hidden">
-<section class="hero" style="text-align:left">
-<div class="eyebrow">CUSTOMER DASHBOARD</div>
-<h1>My <span style="color:#68dfff">Account</span></h1>
-</section>
-
-<div id="authContainer" class="card glow" style="max-width:500px;margin-bottom:20px">
-<h3 id="authTitle">Customer Login</h3>
-<form id="authForm">
-<div class="field"><label>Email Address</label><input id="authEmail" type="email" required placeholder="example@gmail.com"></div>
-<div class="field"><label>Password</label><input id="authPassword" type="password" required placeholder="••••••••"></div>
-<div id="extraAuthFields" class="hidden">
-<div class="field"><label>Full Name</label><input id="authName" placeholder="আপনার পুরো নাম"></div>
-<div class="field"><label>Default Free Fire UID</label><input id="authDefaultUid" inputmode="numeric" placeholder="আপনার ফ্রি ফায়ার UID"></div>
-</div>
-<button class="btn primary" id="authSubmitBtn" style="margin-top:10px;width:100%">Login</button>
-</form>
-<button class="btn" style="margin-top:10px;width:100%" onclick="toggleAuthMode()"><span id="authToggleText">Need an account? Register</span></button>
-<div id="authMessage" style="margin-top:10px"></div>
-</div>
-
-<div id="userDashboard" class="hidden">
-<div class="card glow" style="margin-bottom:20px">
-<h3>Profile Settings</h3>
-<form id="profileForm">
-<div class="formgrid">
-<div class="field"><label>Full Name</label><input id="profileName" required></div>
-<div class="field"><label>Default Free Fire UID (অটো-ফিল হবে)</label><input id="profileDefaultUid" inputmode="numeric"></div>
-<div class="field"><label>Phone Number</label><input id="profilePhone" inputmode="tel"></div>
-</div>
-<button class="btn primary" style="margin-top:10px">Update Profile</button>
-</form>
-<div id="profileMessage" style="margin-top:10px"></div>
-<button class="btn danger" style="margin-top:15px" onclick="customerLogout()">Logout Account</button>
-</div>
-
-<div class="card glow">
-<h3>My Order History</h3>
-<div id="customerOrdersTable" class="tablewrap" style="margin-top:10px">Loading orders...</div>
-</div>
-</div>
 </main>
 
 <main id="categoryPage" class="hidden">
@@ -204,7 +160,7 @@ th{color:#8cddff}
 <form id="orderForm">
 <div class="formgrid">
 <div class="field"><label>Selected Package</label><select id="packageSelect" required><option value="">প্যাকেজ নির্বাচন করুন</option></select></div>
-<div class="field"><label>Free Fire Player UID (ডিফল্ট বা পরিবর্তনযোগ্য)</label><input id="playerUid" required inputmode="numeric" placeholder="আপনার Player UID"></div>
+<div class="field"><label>Free Fire Player UID</label><input id="playerUid" required inputmode="numeric" placeholder="আপনার Player UID"></div>
 <div class="field"><label>Player Name (Optional)</label><input id="playerName" placeholder="Player name"></div>
 <div class="field"><label>আপনার মোবাইল নম্বর</label><input id="customerPhone" required inputmode="tel" placeholder="01XXXXXXXXX"></div>
 <div class="field"><label>Payment Method</label><select id="paymentMethod" required><option value="bKash">bKash</option><option value="Nagad">Nagad</option></select></div>
@@ -264,13 +220,7 @@ th{color:#8cddff}
 </div>
 
 <section id="adminOrders" class="card">
-<div class="section-head">
-  <h2>Customer Orders</h2>
-  <div class="actions">
-    <button class="btn" onclick="loadOrders()">Refresh</button>
-    <button class="btn danger" onclick="deleteAllOrders()">Delete All Orders (Bulk)</button>
-  </div>
-</div>
+<div class="section-head"><h2>Customer Orders</h2><button class="btn" onclick="loadOrders()">Refresh</button></div>
 <div id="ordersTable" class="tablewrap">Loading...</div>
 </section>
 
@@ -346,142 +296,26 @@ let productsCache=[];
 let sectionsCache=[];
 let settingsCache={bkash:"01700000000",nagad:"01700000000",whatsapp:"",store_name:"FREE FIRE DIAMOND TOP UP"};
 let currentUser=null;
-let customerUser=null;
-let customerProfile=null;
 let activeCategory={id:"uid",title:"UID Top Up",icon:"💎"};
-let isRegisterMode=false;
+let realtimeChannel=null;
 
 const $=id=>document.getElementById(id);
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+function esc(s){
+return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
 function money(v){return "৳"+Number(v||0).toLocaleString("en-BD",{maximumFractionDigits:2});}
-function msg(el,text,good=true){el.innerHTML='<div class="notice '+(good?'good':'bad')+'">'+esc(text)+'</div>';}
+function digits(s){return String(s||"").replace(/\D/g,"");}
+function msg(el,text,good=true){
+el.innerHTML='<div class="notice '+(good?'good':'bad')+'">'+esc(text)+'</div>';
+}
 
 function showPage(page){
-["shop","category","track","admin","account"].forEach(p=>$(p+"Page").classList.toggle("hidden",p!==page));
+["shop","category","track","admin"].forEach(p=>$(p+"Page").classList.toggle("hidden",p!==page));
 window.scrollTo({top:0,behavior:"smooth"});
 if(page==="admin")refreshAdminState();
-if(page==="account")openAccountPage();
 }
 
-// ================= CUSTOMER ACCOUNT LOGIC =================
-async function openAccountPage(){
-const {data:{session}}=await db.auth.getSession();
-customerUser=session?.user||null;
-
-if(customerUser){
-$("authContainer").classList.add("hidden");
-$("userDashboard").classList.remove("hidden");
-await loadCustomerProfileData();
-}else{
-$("authContainer").classList.remove("hidden");
-$("userDashboard").classList.add("hidden");
-}
-showPage("account");
-}
-
-function toggleAuthMode(){
-isRegisterMode=!isRegisterMode;
-$("authTitle").textContent=isRegisterMode?"Customer Register":"Customer Login";
-$("authSubmitBtn").textContent=isRegisterMode?"Register & Login":"Login";
-$("authToggleText").textContent=isRegisterMode?"Already have an account? Login":"Need an account? Register";
-$("extraAuthFields").classList.toggle("hidden",!isRegisterMode);
-}
-
-$("authForm").addEventListener("submit",async e=>{
-e.preventDefault();
-const email=$("authEmail").value.trim();
-const password=$("authPassword").value;
-const out=$("authMessage");
-out.innerHTML='<div class="notice">Processing...</div>';
-
-if(isRegisterMode){
-const name=$("authName").value.trim();
-const defUid=$("authDefaultUid").value.trim();
-
-const {data,error}=await db.auth.signUp({
-email,
-password,
-options:{ data: { full_name: name, default_uid: defUid } }
-});
-
-if(error) return msg(out, error.message, false);
-
-customerUser = data.user || (await db.auth.getUser()).data.user;
-
-if(customerUser){
-await db.from("profiles").upsert({
-id: customerUser.id,
-full_name: name,
-default_uid: defUid,
-updated_at: new Date().toISOString()
-});
-}
-
-msg(out, "Registration successful!");
-setTimeout(() => { openAccountPage(); }, 500);
-}else{
-const {data,error}=await db.auth.signInWithPassword({email,password});
-if(error) return msg(out, error.message, false);
-customerUser=data.user;
-openAccountPage();
-}
-});
-
-async function loadCustomerProfileData(){
-if(!customerUser) return;
-
-const {data:prof, error:profErr}=await db.from("profiles").select("*").eq("id",customerUser.id).maybeSingle();
-
-if(prof){
-customerProfile=prof;
-$("profileName").value=prof.full_name||"";
-$("profileDefaultUid").value=prof.default_uid||"";
-$("profilePhone").value=prof.phone||"";
-} else {
-customerProfile={full_name:"", default_uid:"", phone:""};
-}
-
-const {data:orders}=await db.from("orders").select("*").eq("user_id",customerUser.id).order("created_at",{ascending:false});
-const host=$("customerOrdersTable");
-
-if(!orders||!orders.length){
-host.innerHTML='<div class="empty">কোনো অর্ডার পাওয়া যায়নি।</div>';
-return;
-}
-
-host.innerHTML=`<table><thead><tr><th>Order ID</th><th>Package</th><th>Diamonds</th><th>Amount</th><th>Status</th></tr></thead><tbody>`+
-orders.map(o=>`<tr><td><b>${esc(o.order_code)}</b></td><td>${esc(o.package_name)}</td><td>${o.diamonds}</td><td>${money(o.amount)}</td><td><span class="status ${esc(o.status)}">${esc(o.status)}</span></td></tr>`).join("")+
-`</tbody></table>`;
-}
-
-$("profileForm").addEventListener("submit",async e=>{
-e.preventDefault();
-if(!customerUser) return;
-
-const row={
-id: customerUser.id,
-full_name:$("profileName").value.trim(),
-default_uid:$("profileDefaultUid").value.trim(),
-phone:$("profilePhone").value.trim(),
-updated_at:new Date().toISOString()
-};
-
-const {error}=await db.from("profiles").upsert(row);
-if(error) msg($("profileMessage"), error.message, false);
-else {
-msg($("profileMessage"), "Profile updated successfully!");
-await loadCustomerProfileData();
-}
-});
-
-async function customerLogout(){
-await db.auth.signOut();
-customerUser=null;
-customerProfile=null;
-openAccountPage();
-}
-
-// ================= SHOP & CATEGORY LOGIC =================
 function openCategory(id,title,icon){
 activeCategory={id,title,icon};
 $("categoryTitle").textContent=icon+" "+title;
@@ -491,18 +325,13 @@ showPage("category");
 renderProducts();
 }
 
-function selectPackage(id){
-$("packageSelect").value=id;
-if(customerProfile && customerProfile.default_uid){
-$("playerUid").value=customerProfile.default_uid;
-}
-$("orderFormCard").classList.remove("hidden");
-$("orderFormCard").scrollIntoView({behavior:"smooth"});
+function categoryProducts(){
+return productsCache.filter(p=>p.section_id===activeCategory.id);
 }
 
 function renderProducts(){
 const host=$("products"),sel=$("packageSelect");
-const list=productsCache.filter(p=>p.section_id===activeCategory.id);
+const list=categoryProducts();
 $("packageCount").textContent=list.length+" packages";
 
 if(!list.length){
@@ -521,6 +350,12 @@ sel.innerHTML='<option value="">প্যাকেজ নির্বাচন �
 list.map(p=>`<option value="${esc(p.id)}">${esc(p.name)} — ${money(p.price)}</option>`).join("");
 }
 
+function selectPackage(id){
+$("packageSelect").value=id;
+$("orderFormCard").classList.remove("hidden");
+$("orderFormCard").scrollIntoView({behavior:"smooth"});
+}
+
 function renderPaymentInfo(){
 const method=$("paymentMethod").value;
 const number=method==="bKash"?settingsCache.bkash:settingsCache.nagad;
@@ -532,24 +367,24 @@ const [pr,sr]=await Promise.all([
 db.from("products").select("*").eq("active",true).order("sort_order"),
 db.from("store_settings").select("*").eq("id",1).maybeSingle()
 ]);
-if(pr.data)productsCache=pr.data||[];
-if(sr.data)settingsCache={...settingsCache,...sr.data};
+if(pr.error)console.error(pr.error);
+else productsCache=pr.data||[];
+if(sr.error)console.error(sr.error);
+else if(sr.data)settingsCache={...settingsCache,...sr.data};
 renderProducts();
 renderPaymentInfo();
 }
 
 async function loadSections(){
 const {data,error}=await db.from("store_sections").select("*").order("sort_order");
-if(error)return console.error(error);
+if(error){console.error(error);return;}
 sectionsCache=data||[];
 renderHomeCards();
 const select=$("productSection");
-if(select){
 const old=select.value;
 select.innerHTML='<option value="">Select Section</option>'+
 sectionsCache.map(s=>`<option value="${esc(s.id)}">${esc(s.title)}</option>`).join("");
 if(old)select.value=old;
-}
 }
 
 function renderHomeCards(){
@@ -576,11 +411,7 @@ const btn=$("submitOrder"),out=$("orderResult");
 const p=productsCache.find(x=>String(x.id)===$("packageSelect").value);
 if(!p)return msg(out,"একটি Package নির্বাচন করুন।",false);
 
-const {data:{session}}=await db.auth.getSession();
-const userId=session?.user?.id||null;
-
 const data={
-user_id:userId,
 player_uid:$("playerUid").value.trim(),
 player_name:$("playerName").value.trim(),
 customer_phone:$("customerPhone").value.trim(),
@@ -595,24 +426,38 @@ status:"Pending"
 btn.disabled=true;btn.textContent="Submitting...";
 const {data:row,error}=await db.from("orders").insert(data).select("order_code").single();
 btn.disabled=false;btn.textContent="অর্ডার জমা দিন";
-if(error)return msg(out,"অর্ডার জমা হয়নি: "+error.message,false);
+if(error){console.error(error);return msg(out,"অর্ডার জমা হয়নি: "+error.message,false);}
 
 out.innerHTML=`
 <div class="notice good">
-<b>অর্ডার সফলভাবে জমা হয়েছে!</b>
+<b>অর্ডার সফলভাবে জমা হয়েছে!</b>
 <p>আপনার Order ID:</p>
 <div class="ordercode">${esc(row.order_code)}</div>
+<p class="small">Order ID সংরক্ষণ করুন।</p>
+<button class="btn" onclick="copyOrder('${esc(row.order_code)}')">Copy Order ID</button>
 </div>`;
 e.target.reset();
 renderPaymentInfo();
+
+if(settingsCache.whatsapp){
+const text=encodeURIComponent(`New FF Diamond Order\nOrder: ${row.order_code}\nUID: ${data.player_uid}\nPackage: ${p.name}\nPrice: ${p.price}\nPayment: ${data.payment_method}\nTrxID: ${data.transaction_id}`);
+window.open("https://wa.me/"+digits(settingsCache.whatsapp)+"?text="+text,"_blank");
+}
 });
+
+function copyOrder(code){
+navigator.clipboard?.writeText(code).then(()=>alert("Order ID copied")).catch(()=>alert(code));
+}
 
 $("trackForm").addEventListener("submit",async e=>{
 e.preventDefault();
 const out=$("trackResult");
 out.innerHTML='<div class="notice">Searching...</div>';
-const {data,error}=await db.rpc("track_store_order",{p_order_code:$("trackCode").value.trim()});
-if(error||!data||!data.length)return msg(out,"এই Order ID পাওয়া যায়নি।",false);
+const {data,error}=await db.rpc("track_store_order",{
+p_order_code:$("trackCode").value.trim()
+});
+if(error)return msg(out,"Tracking error: "+error.message,false);
+if(!data||!data.length)return msg(out,"এই Order ID পাওয়া যায়নি।",false);
 const o=data[0];
 out.innerHTML=`
 <div class="notice good">
@@ -621,10 +466,10 @@ out.innerHTML=`
 <p>${esc(o.package_name)} - ${o.diamonds} Diamonds</p>
 <p>Amount: <b>${money(o.amount)}</b></p>
 <p>Status: <span class="status ${esc(o.status)}">${esc(o.status)}</span></p>
+<p class="small muted">${new Date(o.created_at).toLocaleString()}</p>
 </div>`;
 });
 
-// ================= ADMIN PANEL LOGIC =================
 $("loginForm").addEventListener("submit",async e=>{
 e.preventDefault();
 const {data,error}=await db.auth.signInWithPassword({
@@ -632,6 +477,7 @@ email:$("adminEmail").value.trim(),
 password:$("adminPassword").value
 });
 if(error)return msg($("loginMessage"),"Login failed: "+error.message,false);
+currentUser=data.user;
 await refreshAdminState();
 });
 
@@ -647,7 +493,7 @@ const {data:admin,error}=await db.from("admin_users").select("user_id").eq("user
 if(error||!admin){
 await db.auth.signOut();
 currentUser=null;
-msg($("loginMessage"),"এই অ্যাকাউন্ট Admin হিসেবে অনুমোদিত নয়।",false);
+msg($("loginMessage"),"এই অ্যাকাউন্ট Admin হিসেবে অনুমোদিত নয়।",false);
 $("adminLogin").classList.remove("hidden");
 $("adminDashboard").classList.add("hidden");
 return;
@@ -671,8 +517,6 @@ $("admin"+t[0].toUpperCase()+t.slice(1)).classList.toggle("hidden",t!==tab);
 document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
 btn.classList.add("active");
 if(tab==="cards")loadAdminCards();
-if(tab==="products")loadAdminProducts();
-if(tab==="settings")loadAdminSettings();
 }
 
 async function loadOrders(){
@@ -682,7 +526,7 @@ const {data,error}=await db.from("orders").select("*").order("created_at",{ascen
 if(error){host.textContent=error.message;return;}
 if(!data.length){host.innerHTML='<div class="empty">কোনো অর্ডার নেই।</div>';return;}
 host.innerHTML=`
-<table><thead><tr><th>Order</th><th>Customer / UID</th><th>Package</th><th>Payment</th><th>Amount</th><th>Status</th><th>Action / Update</th></tr></thead>
+<table><thead><tr><th>Order</th><th>Customer / UID</th><th>Package</th><th>Payment</th><th>Amount</th><th>Status</th><th>Update</th></tr></thead>
 <tbody>${data.map(o=>`
 <tr>
 <td><b>${esc(o.order_code)}</b><div class="small muted">${new Date(o.created_at).toLocaleString()}</div></td>
@@ -691,39 +535,15 @@ host.innerHTML=`
 <td>${esc(o.payment_method)}<div class="small muted">${esc(o.transaction_id)}</div></td>
 <td>${money(o.amount)}</td>
 <td><span class="status ${esc(o.status)}">${esc(o.status)}</span></td>
-<td>
-<div class="actions">
-<select onchange="updateOrder('${esc(o.id)}',this.value)">
+<td><select onchange="updateOrder('${esc(o.id)}',this.value)">
 ${["Pending","Processing","Completed","Cancelled"].map(s=>`<option ${o.status===s?"selected":""}>${s}</option>`).join("")}
-</select>
-<button class="btn danger small" onclick="deleteOrder('${esc(o.id)}')">Delete</button>
-</div>
-</td>
+</select></td>
 </tr>`).join("")}</tbody></table>`;
 }
 
 async function updateOrder(id,status){
 const {error}=await db.from("orders").update({status,updated_at:new Date().toISOString()}).eq("id",id);
-if(error)alert(error.message); else loadOrders();
-}
-
-// Single Order Delete
-async function deleteOrder(id){
-if(!confirm("এই অর্ডারটি স্থায়ীভাবে মুছে ফেলতে চান?")) return;
-const {error}=await db.from("orders").delete().eq("id",id);
-if(error) alert(error.message);
-else loadOrders();
-}
-
-// Bulk Orders Delete (All Orders)
-async function deleteAllOrders(){
-if(!confirm("সতর্কবার্তা: আপনি কি সমস্ত অর্ডারের হিস্ট্রি একসাথে (Bulk) ডিলিট করতে চান?")) return;
-const {error}=await db.from("orders").delete().neq("id", 0); // সব রেকর্ড ডিলিট করবে
-if(error) alert(error.message);
-else {
-alert("সব অর্ডার সফলভাবে মুছে ফেলা হয়েছে।");
-loadOrders();
-}
+if(error)alert(error.message);else loadOrders();
 }
 
 async function loadAdminProducts(){
@@ -793,7 +613,8 @@ else{await loadAdminProducts();await loadStore();}
 
 async function loadAdminSettings(){
 const {data,error}=await db.from("store_settings").select("*").eq("id",1).maybeSingle();
-if(error||!data)return;
+if(error){console.error(error);return;}
+if(!data)return;
 $("bkashNumber").value=data.bkash||"";
 $("nagadNumber").value=data.nagad||"";
 $("whatsappNumber").value=data.whatsapp||"";
@@ -817,6 +638,7 @@ await loadStore();
 }
 });
 
+/* Homepage card admin */
 async function loadAdminCards(){
 const {data,error}=await db.from("store_sections").select("*").order("sort_order");
 if(error)return console.error(error);
@@ -853,7 +675,7 @@ $("cardForm").addEventListener("submit",async e=>{
 e.preventDefault();
 const row={
 id:$("cardId").value.trim(),
-title:$("cardTitle.title")?.value?.trim()||$("cardTitle").value.trim(),
+title:$("cardTitle").value.trim(),
 subtitle:$("cardSubtitle").value.trim(),
 icon:$("cardIcon").value.trim(),
 image_url:$("cardImage").value.trim(),
@@ -875,12 +697,32 @@ await loadAdminCards();
 await loadSections();
 }
 
+/* Realtime subscriptions */
+function startRealtime(){
+if(realtimeChannel)db.removeChannel(realtimeChannel);
+realtimeChannel=db.channel("store-live-updates")
+.on("postgres_changes",{event:"*",schema:"public",table:"products"},async()=>{
+await loadStore();
+if(currentUser)await loadAdminProducts();
+})
+.on("postgres_changes",{event:"*",schema:"public",table:"store_settings"},loadStore)
+.on("postgres_changes",{event:"*",schema:"public",table:"store_sections"},async()=>{
+await loadSections();
+if(currentUser)await loadAdminCards();
+})
+.on("postgres_changes",{event:"*",schema:"public",table:"orders"},async()=>{
+if(currentUser)await loadOrders();
+})
+.subscribe(status=>console.log("Realtime:",status));
+}
+
+db.auth.onAuthStateChange((event,session)=>{
+currentUser=session?.user||null;
+});
+
 async function init(){
 await Promise.all([loadStore(),loadSections()]);
-const {data:{session}}=await db.auth.getSession();
-if(session?.user){
-customerUser=session.user;
-}
+startRealtime();
 }
 init().catch(console.error);
 </script>
